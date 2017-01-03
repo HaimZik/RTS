@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class SelectionManager : MonoBehaviour
 {
 
-    public Camera cam;
+    public Camera Cam;
     public LayerMask PlayerUnitsLayerMask;
     public LayerMask TerrainLayerMask;
     public GameObject SelectionCubePrefab;
@@ -47,8 +47,8 @@ public class SelectionManager : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
             {
-                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-                if (!Physics.Raycast(ray, out endDragRayHit, 100, TerrainLayerMask))
+                Ray ray = Cam.ScreenPointToRay(Input.mousePosition);
+                if (!Physics.Raycast(ray, out endDragRayHit, Mathf.Infinity, TerrainLayerMask))
                 {
                     onDragEnd();
                 }
@@ -75,8 +75,8 @@ public class SelectionManager : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out startDragRayHit, 100, TerrainLayerMask))
+                Ray ray = Cam.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out startDragRayHit, Mathf.Infinity, TerrainLayerMask))
                 {
                     IsDragging = true;
                 }
@@ -112,7 +112,7 @@ public class SelectionManager : MonoBehaviour
 
     private void OnClick()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Cam.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out endDragRayHit);
         if(endDragRayHit.collider.gameObject.layer==Mathf.Log(TerrainLayerMask.value,2))//reverse operation of layerMask 
         {
