@@ -4,20 +4,20 @@ using System.Collections;
 public class Unit : MonoBehaviour {
 
     [System.NonSerialized]
-    public Task[] availableTasks;
+    public Task[] AvailableTasks;
 
     void Start()
     {
-        availableTasks = GetComponents<Task>();
+        AvailableTasks = GetComponents<Task>();
     }
 
     public T ChangeTask<T>() where T :Task
     {
         CencelAllTasks();
-        for (int i = 0; i < availableTasks.Length; i++)
+        for (int i = 0; i < AvailableTasks.Length; i++)
         {
-            Task task = availableTasks[i];
-            if (availableTasks[i] is T && !task.GetType().IsSubclassOf(typeof(T)))
+            Task task = AvailableTasks[i];
+            if (AvailableTasks[i] is T && !task.GetType().IsSubclassOf(typeof(T)))
             {
                 task.enabled = true;
                 return task as T;
@@ -29,11 +29,11 @@ public class Unit : MonoBehaviour {
 
     public void CencelAllTasks()
     {
-        for (int i = 0; i < availableTasks.Length; i++)
+        for (int i = 0; i < AvailableTasks.Length; i++)
         {
-            if (availableTasks[i].enabled)
+            if (AvailableTasks[i].enabled)
             {
-                availableTasks[i].enabled = false;
+                AvailableTasks[i].enabled = false;
             }
         }
     }
