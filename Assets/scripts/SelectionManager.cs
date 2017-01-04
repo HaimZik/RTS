@@ -48,7 +48,7 @@ public class SelectionManager : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-                if (!Physics.Raycast(ray, out endDragRayHit, 100, TerrainLayerMask))
+                if (!Physics.Raycast(ray, out endDragRayHit, Mathf.Infinity, TerrainLayerMask))
                 {
                     onDragEnd();
                 }
@@ -76,7 +76,7 @@ public class SelectionManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out startDragRayHit, 100, TerrainLayerMask))
+                if (Physics.Raycast(ray, out startDragRayHit, Mathf.Infinity, TerrainLayerMask))
                 {
                     IsDragging = true;
                 }
